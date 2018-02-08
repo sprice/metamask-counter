@@ -1,5 +1,5 @@
-import { createStore } from 'redux'
-
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import rootReducer from './reducers/index'
 
 const defaultState = {
@@ -11,11 +11,7 @@ const defaultState = {
   count: 0
 }
 
-const store = createStore(
-  rootReducer,
-  defaultState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
-// const store = createStore(rootReducer, defaultState)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const store = createStore(rootReducer, defaultState, composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 export default store

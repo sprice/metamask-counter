@@ -5,9 +5,13 @@ import './App.css'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actionCreators from '../actions/actionCreators'
+import * as actionCreators from '../actions'
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getCount()
+  }
+
   render() {
     return (
       <div className="App">
@@ -34,6 +38,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
-
-export default ConnectedApp
+export default connect(mapStateToProps, mapDispatchToProps)(App)
