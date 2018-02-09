@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  console.log('login data', data)
   const { sig, address } = req.body
   const verified = verifySig(sig, address)
 
@@ -28,7 +27,6 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/user/:address/count', (req, res) => {
-  console.log('get data', data)
   const { sig, address } = req.query
   const verified = verifySig(sig, address)
 
@@ -45,7 +43,6 @@ app.get('/user/:address/count', (req, res) => {
 })
 
 app.put('/user/:address/count', (req, res) => {
-  console.log('put data', data)
   const { sig, address } = req.body
   const verified = verifySig(sig, address)
 
