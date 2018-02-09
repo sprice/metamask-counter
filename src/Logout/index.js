@@ -26,13 +26,13 @@ class Logout extends Component {
 
   incrementCount() {
     const { sig, address } = this.props.auth
-    this.props.increment(sig, address)
+    this.props.increment(apiServer, { sig, address })
   }
 
   showCount() {
     this.setState({ showCount: true })
     const { sig, address } = this.props.auth
-    this.props.getCount(apiServer, sig, address)
+    this.props.getCount(apiServer, { sig, address })
   }
 
   render() {

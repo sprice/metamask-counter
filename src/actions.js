@@ -33,23 +33,24 @@ const receiveIncrementCount = json => {
   }
 }
 
-const incrementPut = (sig, address) => {
+const incrementPut = (apiServer, data) => {
   return dispatch => {
     const options = {
-      method: 'POST',
+      method: 'PUT',
+      body: JSON.stringify(data),
       headers: new Headers({
         'Content-Type': 'application/json'
       })
     }
-    return fetch(`http://localhost:5000/user/${address}/count?sig=${sig}&address=${address}`, options)
+    return fetch(`${apiServer}/user/${data.address}/count`, options)
       .then(response => response.json())
       .then(json => dispatch(receiveIncrementCount(json)))
   }
 }
 
-export const increment = (sig, address) => {
+export const increment = (apiServer, data) => {
   return (dispatch, getState) => {
-    return dispatch(incrementPut(sig, address))
+    return dispatch(incrementPut(apiServer, data))
   }
 }
 
@@ -66,18 +67,18 @@ const receiveCount = json => {
   }
 }
 
-const fetchCount = (apiServer, sig, address) => {
+const fetchCount = (apiServer, data) => {
   return dispatch => {
     dispatch(requestCount())
-    return fetch(`${apiServer}/user/${address}/count?sig=${sig}&address=${address}`)
+    return fetch(`${apiServer}/user/${data.address}/count?sig=${data.sig}&address=${data.address}`)
       .then(response => response.json())
       .then(json => dispatch(receiveCount(json)))
   }
 }
 
-export const getCount = (apiServer, sig, address) => {
+export const getCount = (apiServer, data) => {
   return (dispatch, getState) => {
-    return dispatch(fetchCount(apiServer, sig, address))
+    return dispatch(fetchCount(apiServer, data))
   }
 }
 

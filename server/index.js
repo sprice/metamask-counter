@@ -44,9 +44,9 @@ app.get('/user/:address/count', (req, res) => {
   return res.json({ count })
 })
 
-app.post('/user/:address/count', (req, res) => {
-  console.log('post data', data)
-  const { sig, address } = req.query
+app.put('/user/:address/count', (req, res) => {
+  console.log('put data', data)
+  const { sig, address } = req.body
   const verified = verifySig(sig, address)
 
   if (!verified) {
