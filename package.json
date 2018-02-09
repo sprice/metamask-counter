@@ -17,12 +17,13 @@
     "web3": "^1.0.0-beta.29"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test-server": "mocha",
     "eject": "react-scripts eject",
-    "serve": "node server"
+    "start": "node server",
+    "deploy-front-end": "export AWS_PROFILE=up; up production;"
   },
   "devDependencies": {
     "assert": "^1.4.1",

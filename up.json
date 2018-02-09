@@ -1,0 +1,15 @@
+{
+  "name": "meta-counter",
+  "type": "static",
+  "static": {
+    "dir": "build"
+  },
+  "stages": {
+    "production": {
+      "domain": "count.shawnprice.com"
+    }
+  },
+  "hooks": {
+    "build": "yarn build"
+  }
+}

@@ -10,6 +10,10 @@ const verifySig = require('./verify-sig')
 app.use(cors())
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.json({ status: 'online' })
+})
+
 app.post('/login', (req, res) => {
   const { sig, address } = req.body
   const verified = verifySig(sig, address)

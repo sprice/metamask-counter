@@ -1,37 +1,17 @@
-## Front End
+# Metamask Counter
 
-1. Check for Metamask
-   1. If not unlocked, show Metamask install link
-1. If Metamask unlocked
-   1. If no creds in localStorage, prompt for login
-   1. If creds exists, display buttons which do UPDATE and READ calls
-1. Login
-   1. Create signed message with Metamask
-   1. Store signature, and address to localStorage
-   1. POST to /login with creds
-1. Authenticated page with UPDATE and READ buttons
-   1. UPDATE does a PUT to /user/:address/count and displays count
-   1. READ does a GET to /user/:address/count and displays count
+A simple web app using Metamask for authentication. The server keeps track of state for each validated Ethereum address.
 
-## Server
+## Deployment
 
-### POST /login
+### Front End
 
-1. Body includes signature, and address.
-1. Ensure extracted address (from data and signature) matches address. If not return 403
-1. Use hash map, indexed by address, to store counter.
-1. If address index does not exist, create it and set counter to 0. Return 200 {msg: 'created'}
-1. If address exists, return 200 {msg: 'exists'}
+The Front End is a static single page React app. It is deployed using [up](https://up.docs.apex.sh).
 
-### PUT /user/:address/count
+[count.shawnprice.com](https://count.shawnprice.com)
 
-1. Body includes signature, and address.
-1. Ensure extracted address (from data and signature) matches address. If not return 403
-1. Ensure address exists in hash map. If not return 404
-1. Increment the count value. Return 200 {msg: 'incremented'}
+### Server
 
-### GET /user/:address/count?sig=:sig&address=:address
+The server is a simple Express Node.js app. It is deployed using [heroku](https://www.heroku.com)
 
-1. Ensure extracted address (from data and signature) matches address. If not return 403
-1. Ensure address exists in hash map. If not return 404
-1. Return 200 {count: COUNT}
+[meta-counter.herokuapp.com](https://meta-counter.herokuapp.com/)
