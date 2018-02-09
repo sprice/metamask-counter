@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { apiServer } from '../constants'
 
 class Logout extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Logout extends Component {
     if (!this.props.hasLoggedInBefore) {
       this.props.recordLogin(true)
       const { sig, address } = this.props.auth
-      this.props.loginToServer({ sig, address })
+      this.props.loginToServer(apiServer, { sig, address })
     }
   }
   logout() {
@@ -31,7 +32,7 @@ class Logout extends Component {
   showCount() {
     this.setState({ showCount: true })
     const { sig, address } = this.props.auth
-    this.props.getCount(sig, address)
+    this.props.getCount(apiServer, sig, address)
   }
 
   render() {

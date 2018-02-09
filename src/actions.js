@@ -66,18 +66,18 @@ const receiveCount = json => {
   }
 }
 
-const fetchCount = (sig, address) => {
+const fetchCount = (apiServer, sig, address) => {
   return dispatch => {
     dispatch(requestCount())
-    return fetch(`http://localhost:5000/user/${address}/count?sig=${sig}&address=${address}`)
+    return fetch(`${apiServer}/user/${address}/count?sig=${sig}&address=${address}`)
       .then(response => response.json())
       .then(json => dispatch(receiveCount(json)))
   }
 }
 
-export const getCount = (sig, address) => {
+export const getCount = (apiServer, sig, address) => {
   return (dispatch, getState) => {
-    return dispatch(fetchCount(sig, address))
+    return dispatch(fetchCount(apiServer, sig, address))
   }
 }
 
@@ -88,7 +88,7 @@ const receiveLoginStatus = json => {
   }
 }
 
-const serverLoginPost = data => {
+const serverLoginPost = (apiServer, data) => {
   return dispatch => {
     const options = {
       method: 'POST',
@@ -97,14 +97,14 @@ const serverLoginPost = data => {
         'Content-Type': 'application/json'
       })
     }
-    return fetch(`http://localhost:5000/login`, options)
+    return fetch(`${apiServer}/login`, options)
       .then(response => response.json())
       .then(json => dispatch(receiveLoginStatus(json)))
   }
 }
 
-export const loginToServer = data => {
+export const loginToServer = (apiServer, data) => {
   return (dispatch, getState) => {
-    return dispatch(serverLoginPost(data))
+    return dispatch(serverLoginPost(apiServer, data))
   }
 }

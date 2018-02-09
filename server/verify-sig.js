@@ -4,7 +4,7 @@ const data = [
   {
     type: 'string',
     name: 'Sign In',
-    value: 'Sign in to codexprotocol.com'
+    value: 'Sign in to count.shawnprice.com'
   }
 ]
 
