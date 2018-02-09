@@ -58,4 +58,6 @@ app.put('/user/:address/count', (req, res) => {
   res.json({ msg: 'count incremented' })
 })
 
-app.listen(5000, () => console.log('Example app listening on port 5000!'))
+const port = process.env.PORT || 5000
+
+app.listen(port, () => console.log(`API server running on port ${port}`))
