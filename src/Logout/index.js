@@ -12,7 +12,13 @@ class Logout extends Component {
       showCount: false
     }
   }
-
+  componentDidMount() {
+    if (!this.props.hasLoggedInBefore) {
+      this.props.recordLogin(true)
+      const { sig, address } = this.props.auth
+      this.props.loginToServer({ sig, address })
+    }
+  }
   logout() {
     this.props.logout()
   }
@@ -23,6 +29,8 @@ class Logout extends Component {
 
   showCount() {
     this.setState({ showCount: true })
+    const { sig, address } = this.props.auth
+    this.props.getCount(sig, address)
   }
 
   render() {

@@ -10,10 +10,19 @@ export const login = auth => {
 }
 
 export const logout = auth => {
-  window.localStorage.clear()
+  window.localStorage.removeItem('sig')
+  window.localStorage.removeItem('address')
   return {
     type: 'LOGOUT',
     auth
+  }
+}
+
+export const recordLogin = hasLoggedInBefore => {
+  window.localStorage.hasLoggedInBefore = hasLoggedInBefore
+  return {
+    type: 'RECORD_LOGIN',
+    hasLoggedInBefore
   }
 }
 
@@ -36,17 +45,45 @@ const receiveCount = json => {
   }
 }
 
-function fetchCount() {
+const fetchCount = (sig, address) => {
   return dispatch => {
     dispatch(requestCount())
-    return fetch(`http://localhost:5000/test`)
+    return fetch(`http://localhost:5000/user/${address}/count?sig=${sig}&address=${address}`)
       .then(response => response.json())
       .then(json => dispatch(receiveCount(json)))
   }
 }
 
-export function getCount() {
+export const getCount = (sig, address) => {
   return (dispatch, getState) => {
-    return dispatch(fetchCount())
+    return dispatch(fetchCount(sig, address))
+  }
+}
+
+const receiveLoginStatus = json => {
+  return {
+    type: 'RECEIVE_LOGIN_STATUS',
+    count: json.status
+  }
+}
+
+const serverLoginPost = data => {
+  return dispatch => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }
+    return fetch(`http://localhost:5000/login`, options)
+      .then(response => response.json())
+      .then(json => dispatch(receiveLoginStatus(json)))
+  }
+}
+
+export const loginToServer = data => {
+  return (dispatch, getState) => {
+    return dispatch(serverLoginPost(data))
   }
 }

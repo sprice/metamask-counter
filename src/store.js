@@ -4,10 +4,10 @@ import rootReducer from './reducers/index'
 
 const defaultState = {
   auth: {
-    hash: window.localStorage.hash,
     sig: window.localStorage.sig,
     address: window.localStorage.address
   },
+  hasLoggedInBefore: !!window.localStorage.hasLoggedInBefore,
   count: 0
 }
 

@@ -8,10 +8,6 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../actions'
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getCount()
-  }
-
   render() {
     return (
       <div className="App">
@@ -30,7 +26,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
-    count: state.count
+    count: state.count,
+    hasLoggedInBefore: state.hasLoggedInBefore
   }
 }
 
