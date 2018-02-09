@@ -24,7 +24,8 @@ class Logout extends Component {
   }
 
   incrementCount() {
-    this.props.increment()
+    const { sig, address } = this.props.auth
+    this.props.increment(sig, address)
   }
 
   showCount() {

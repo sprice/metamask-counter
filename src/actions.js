@@ -26,9 +26,30 @@ export const recordLogin = hasLoggedInBefore => {
   }
 }
 
-export const increment = () => {
+const receiveIncrementCount = json => {
   return {
-    type: 'INCREMENT_COUNT'
+    type: 'INCREMENT_COUNT',
+    count: json.count
+  }
+}
+
+const incrementPut = (sig, address) => {
+  return dispatch => {
+    const options = {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }
+    return fetch(`http://localhost:5000/user/${address}/count?sig=${sig}&address=${address}`, options)
+      .then(response => response.json())
+      .then(json => dispatch(receiveIncrementCount(json)))
+  }
+}
+
+export const increment = (sig, address) => {
+  return (dispatch, getState) => {
+    return dispatch(incrementPut(sig, address))
   }
 }
 
