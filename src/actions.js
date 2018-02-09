@@ -36,7 +36,7 @@ const receiveIncrementCount = json => {
 const incrementPut = (sig, address) => {
   return dispatch => {
     const options = {
-      method: 'PUT',
+      method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'
       })
