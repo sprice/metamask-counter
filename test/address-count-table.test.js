@@ -48,8 +48,8 @@ describe('AddressCountTable', function() {
   describe('increment()', () => {
     it('increments an address that exists', () => {
       const created = table.create('foo')
-      table.increment('foo')
-      assert.equal(table.get('foo'), 1)
+      const incremented = table.increment('foo')
+      assert.equal(incremented, 1)
     })
     it('increments an address not existing', () => {
       const created = table.create('foo')

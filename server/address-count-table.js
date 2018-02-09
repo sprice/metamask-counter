@@ -22,7 +22,10 @@ class AddressCountTable {
 
   increment(address) {
     if (typeof this.table[address] === 'undefined') return false
-    else this.table[address] += 1
+    else {
+      this.table[address] += 1
+      return this.table[address]
+    }
   }
 }
 
