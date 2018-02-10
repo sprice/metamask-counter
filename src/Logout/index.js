@@ -41,13 +41,19 @@ class Logout extends Component {
         <h1>Logged In</h1>
         <h2>{this.props.auth.address}</h2>
         <p>
-          <a onClick={this.logout}>Logout</a>
+          <button className="pure-button" onClick={this.logout}>
+            Logout
+          </button>
         </p>
         <p>
-          <a onClick={this.incrementCount}>UPDATE</a>
+          <button className="pure-button" onClick={this.incrementCount}>
+            UPDATE
+          </button>
         </p>
         <p>
-          <a onClick={this.showCount}>READ</a>
+          <button className="pure-button" onClick={this.showCount}>
+            READ
+          </button>
         </p>
         {this.state.showCount && (
           <p>
