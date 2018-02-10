@@ -13,7 +13,6 @@ class Login extends Component {
     }
   }
 
-  // @COMMENT: https://medium.com/metamask/scaling-web3-with-signtypeddata-91d6efc8b290
   signMsg(msgParams, address) {
     address = address.toLowerCase()
     this.state.web3.currentProvider.sendAsync(

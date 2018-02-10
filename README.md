@@ -2,6 +2,10 @@
 
 A simple web app using Metamask for authentication. The server keeps track of state for each validated Ethereum address.
 
+## Resources used
+
+See RESOURCES.md
+
 ## Authentication
 
 Authentication is handled using `web3.js` and Metamask to sign data with an Ethereum address private key on the front end. The signature is stored in localStorage and is used in every API request. The API server confirmes that the extracted address from the signature matches the supplied address, thereby verifying that the API caller owns the supplied address.
