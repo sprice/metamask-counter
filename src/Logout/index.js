@@ -13,6 +13,7 @@ class Logout extends Component {
       showCount: false
     }
   }
+
   componentDidMount() {
     const { sig, address } = this.props.auth
     this.props.loginToServer(apiServer, { sig, address }).then(() => {
@@ -20,6 +21,7 @@ class Logout extends Component {
       this.props.getCount(apiServer, { sig, address })
     })
   }
+
   logout() {
     this.props.logout()
   }
