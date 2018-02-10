@@ -3,7 +3,6 @@ import Loader from 'react-loader'
 import getWeb3 from '../utils/getWeb3'
 import Login from '../Login'
 import Logout from '../Logout'
-import './AccountDetails.css'
 
 class AccountDetails extends Component {
   constructor(props) {
