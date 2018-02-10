@@ -19,7 +19,7 @@ On the front end this is handled in `./src/Login/index.js`. On the server this i
 ## Installation
 
 ```
-$ git clone https://github.com/sprice/metamask-counter.git
+$ git clone https://github.com/johnhforrest/codex-sprice.git
 $ cd metamask-counter
 $ yarn
 $ yarn test
