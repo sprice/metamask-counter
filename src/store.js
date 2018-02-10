@@ -7,7 +7,6 @@ const defaultState = {
     sig: window.localStorage.sig,
     address: window.localStorage.address
   },
-  hasLoggedInBefore: !!window.localStorage.hasLoggedInBefore,
   count: 0
 }
 

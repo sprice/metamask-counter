@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import sigUtil from 'eth-sig-util'
-import getWeb3 from '../utils/getWeb3'
 
 class Login extends Component {
   constructor(props) {
@@ -10,20 +9,8 @@ class Login extends Component {
     this.signMsg = this.signMsg.bind(this)
 
     this.state = {
-      web3: null
+      web3: this.props.web3
     }
-  }
-
-  componentWillMount() {
-    getWeb3
-      .then(results => {
-        this.setState({
-          web3: results.web3
-        })
-      })
-      .catch(err => {
-        console.log('Error finding web3.')
-      })
   }
 
   // @COMMENT: https://medium.com/metamask/scaling-web3-with-signtypeddata-91d6efc8b290

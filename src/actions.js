@@ -18,14 +18,6 @@ export const logout = auth => {
   }
 }
 
-export const recordLogin = hasLoggedInBefore => {
-  window.localStorage.hasLoggedInBefore = hasLoggedInBefore
-  return {
-    type: 'RECORD_LOGIN',
-    hasLoggedInBefore
-  }
-}
-
 const receiveIncrementCount = json => {
   return {
     type: 'INCREMENT_COUNT',
