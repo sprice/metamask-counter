@@ -14,7 +14,7 @@ See RESOURCES.md
 
 Authentication is handled using `web3.js` and Metamask to sign data with an Ethereum address private key on the front end. The signature is stored in localStorage and is used in every API request. The API server confirmes that the extracted address from the signature matches the supplied address, thereby verifying that the API caller owns the supplied address.
 
-On the front end this is handled in `./src/Login/index.js`. On the server this is handled in `./server/index.js` and `./server/verify-sig.js`. The server includes tests at `./test`.
+On the front end this is handled in `./src/Login/index.js`. On the server this is handled in `./server/index.js` and `./server/verify-sig.js`.
 
 ## Installation
 
