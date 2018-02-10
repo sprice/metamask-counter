@@ -15,7 +15,10 @@ class Logout extends Component {
   }
   componentDidMount() {
     const { sig, address } = this.props.auth
-    this.props.loginToServer(apiServer, { sig, address })
+    this.props.loginToServer(apiServer, { sig, address }).then(() => {
+      const { sig, address } = this.props.auth
+      this.props.getCount(apiServer, { sig, address })
+    })
   }
   logout() {
     this.props.logout()

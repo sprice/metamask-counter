@@ -43,7 +43,7 @@ class AccountDetails extends Component {
           const normalizedAddress = userAddress.toLowerCase()
           const { address } = this.props.auth
           // Check saved address with connected Metamask address
-          if (normalizedAddress !== address) {
+          if (normalizedAddress && address && normalizedAddress !== address) {
             this.props.logout()
           }
           this.setState({ address: normalizedAddress })
