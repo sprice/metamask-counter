@@ -20,17 +20,13 @@ class AccountDetails extends Component {
   }
 
   componentWillMount() {
-    getWeb3
-      .then(results => {
-        this.setState({
-          web3: results.web3
-        })
-        this.checkAccount()
-        this.loadPage()
+    getWeb3.then(results => {
+      this.setState({
+        web3: results.web3
       })
-      .catch(err => {
-        console.log('Error finding web3.')
-      })
+      this.checkAccount()
+      this.loadPage()
+    })
   }
 
   checkAccount() {

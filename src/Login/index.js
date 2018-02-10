@@ -36,8 +36,6 @@ class Login extends Component {
 
         if (recovered === address) {
           this.props.login({ sig, address })
-        } else {
-          console.log('Failed to verify signer, got: ' + result)
         }
       }
     )
