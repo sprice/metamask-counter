@@ -8,3 +8,5 @@
 1. https://expressjs.com/
 1. https://www.npmjs.com/
 1. https://github.com/facebook/create-react-app
+1. https://developer.mozilla.org/en-US/
+1. https://devcenter.heroku.com/
