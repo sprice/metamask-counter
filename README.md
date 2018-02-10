@@ -14,7 +14,7 @@ On the front end this is handled in `./src/Login/index.js`. On the server this i
 $ git clone https://github.com/sprice/metamask-counter.git
 $ cd metamask-counter
 $ yarn
-$ yarn test
+$ yarn test-server
 $ yarn start
 $ yarn start-dev
 ```

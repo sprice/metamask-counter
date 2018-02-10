@@ -19,7 +19,7 @@ describe('verifySig()', function() {
     assert.equal(valid, true)
   })
 
-  it('confirms an invalid signature', () => {
+  it('confirms a signature is invalid', () => {
     const valid = verifySig(invalidSig, address)
     assert.equal(valid, false)
   })
