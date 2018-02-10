@@ -2,6 +2,8 @@
 
 A simple web app using Metamask for authentication. The server keeps track of state for each validated Ethereum address.
 
+[count.shawnprice.com](https://count.shawnprice.com)
+
 ## Project Definition and Original Design Doc
 
 See PROJECT1.md and DESIGN_DOC.md
