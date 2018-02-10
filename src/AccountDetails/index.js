@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loader from 'react-loader'
 import getWeb3 from '../utils/getWeb3'
 import Login from '../Login'
 import Logout from '../Logout'
@@ -10,10 +11,12 @@ class AccountDetails extends Component {
 
     this.isLoggedIn = this.isLoggedIn.bind(this)
     this.metamaskConnected = this.metamaskConnected.bind(this)
+    this.loadPage = this.loadPage.bind(this)
 
     this.state = {
       web3: null,
-      address: null
+      address: null,
+      loaded: false
     }
   }
 
@@ -24,6 +27,7 @@ class AccountDetails extends Component {
           web3: results.web3
         })
         this.checkAccount()
+        this.loadPage()
       })
       .catch(err => {
         console.log('Error finding web3.')
@@ -55,6 +59,13 @@ class AccountDetails extends Component {
     else return false
   }
 
+  // Hacky page load spinner to not flash "Install metamask"
+  loadPage() {
+    setTimeout(() => {
+      this.setState({ loaded: true })
+    }, 750)
+  }
+
   isLoggedIn() {
     if (this.props.auth && this.props.auth.sig && this.props.auth.address) return true
     else return false
@@ -63,17 +74,19 @@ class AccountDetails extends Component {
   render() {
     return (
       <div className="account-details">
-        {this.metamaskConnected() ? (
-          this.isLoggedIn() ? (
-            <Logout {...this.props} />
+        <Loader loaded={this.state.loaded}>
+          {this.metamaskConnected() ? (
+            this.isLoggedIn() ? (
+              <Logout {...this.props} />
+            ) : (
+              <Login {...this.props} web3={this.state.web3} />
+            )
           ) : (
-            <Login {...this.props} web3={this.state.web3} />
-          )
-        ) : (
-          <span>
-            Please install and connect to <a href="https://metamask.io/">Metamask</a> browser extension
-          </span>
-        )}
+            <span>
+              Please install and connect to <a href="https://metamask.io/">Metamask</a> browser extension
+            </span>
+          )}
+        </Loader>
       </div>
     )
   }
