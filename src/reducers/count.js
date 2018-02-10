@@ -4,6 +4,8 @@ const count = (state = 0, action) => {
       return state + 1
     case 'RECEIVE_COUNT':
       return action.count
+    case 'LOGOUT':
+      return 0
     default:
       return state
   }
