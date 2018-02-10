@@ -8,6 +8,17 @@ Authentication is handled using `web3.js` and Metamask to sign data with an Ethe
 
 On the front end this is handled in `./src/Login/index.js`. On the server this is handled in `./server/index.js` and `./server/verify-sig.js`. The server includes tests at `./test`.
 
+## Installation
+
+```
+$ git clone https://github.com/sprice/metamask-counter.git
+$ cd metamask-counter
+$ yarn
+$ yarn test
+$ yarn start
+$ yarn start-dev
+```
+
 ## Deployment
 
 ### Front End
